@@ -52,3 +52,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim: ts=2 sts=2 sw=2 et
+
+-- [[ Keymaps added by me ]]
+-- NOTE: These keymaps are my personal
+
+-- Open new empty buffer in vsplit
+vim.keymap.set('n', '<C-w>n', '<cmd>vnew<CR>', { desc = 'Open empty buffer' })
+-- Close buffer
+vim.keymap.set('n', '<leader>x', '<cmd>bdelete<CR>', { desc = 'Close buffer' })
+
+-- ToggleTerm keybinds
+vim.keymap.set({ 'n', 'i', 't' }, '<A-1>', '<cmd>1ToggleTerm direction=horizontal size=24<CR>', { desc = 'Open horizontal terminal' })
+vim.keymap.set({ 'n', 'i', 't' }, '<A-2>', '<cmd>2ToggleTerm direction=vertical size=75<CR>', { desc = 'Open vertical terminal' })
+vim.keymap.set({ 'n', 'i', 't' }, '<A-3>', '<cmd>3ToggleTerm direction=float size=24<CR>', { desc = 'Open vertical terminal' })
