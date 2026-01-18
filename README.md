@@ -1,3 +1,9 @@
+# Tom notes
+
+> [!IMPORTANT]
+> Upstream kickstart-nvim is unmaintained, see https://github.com/nvim-lua/kickstart.nvim/pull/1627
+> for more info and keep an eye out how the situation progresses.
+
 # kickstart-modular.nvim
 
 ## Introduction
