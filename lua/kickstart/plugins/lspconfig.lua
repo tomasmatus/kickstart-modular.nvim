@@ -190,10 +190,27 @@ return {
             return diagnostic_message[diagnostic.severity]
           end,
         },
-
-        -- Display multiline diagnostics as virtual lines
-        virtual_lines = true,
       }
+
+      -- Toggle virtual lines for diagnostics
+      vim.keymap.set('n', '<leader>td', function()
+        local is_enabled = not not vim.diagnostic.config().virtual_lines
+        local new_config;
+        if is_enabled then
+          new_config = false
+        else
+          new_config = {
+            format = function(diagnostic)
+              local code = diagnostic.code == nil and '' or (' [%s]'):format(diagnostic.code)
+              local message = ('%s: %s'):format(diagnostic.source, diagnostic.message)
+              return message .. code
+            end,
+          }
+        end
+
+        vim.diagnostic.config({ virtual_lines = new_config })
+      end, { desc = 'Toggle line [d]iagnostics' })
+
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
